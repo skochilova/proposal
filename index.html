@@ -1,0 +1,965 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Предложение по совершенствованию управленческих процессов</title>
+
+    <style>
+        :root {
+            --background: #f4f7fb;
+            --surface: rgba(255, 255, 255, 0.88);
+            --surface-solid: #ffffff;
+
+            --primary: #243b68;
+            --primary-light: #4b6cb7;
+            --accent: #6c63ff;
+            --accent-secondary: #16a6a1;
+            --accent-soft: rgba(108, 99, 255, 0.1);
+
+            --text: #263044;
+            --text-muted: #667085;
+            --border: rgba(36, 59, 104, 0.12);
+
+            --shadow: 0 24px 70px rgba(36, 59, 104, 0.12);
+            --small-shadow: 0 10px 30px rgba(36, 59, 104, 0.08);
+
+            --radius-large: 28px;
+            --radius-medium: 18px;
+            --radius-small: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+            color: var(--text);
+            line-height: 1.75;
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(108, 99, 255, 0.12),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(22, 166, 161, 0.12),
+                    transparent 28%
+                ),
+                linear-gradient(135deg, #f7f9fd 0%, #edf2f9 100%);
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            z-index: -1;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.35;
+        }
+
+        body::before {
+            top: -100px;
+            right: -80px;
+            background: #6c63ff;
+        }
+
+        body::after {
+            bottom: -130px;
+            left: -100px;
+            background: #16a6a1;
+        }
+
+        .page {
+            width: min(1120px, calc(100% - 32px));
+            margin: 48px auto;
+        }
+
+        .document {
+            position: relative;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Верхний заголовочный блок */
+
+        .hero {
+            position: relative;
+            padding: 64px 64px 56px;
+            color: #ffffff;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(27, 49, 91, 0.98),
+                    rgba(75, 108, 183, 0.96) 55%,
+                    rgba(108, 99, 255, 0.92)
+                );
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -110px;
+            right: -80px;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: 160px;
+            bottom: -130px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(22, 166, 161, 0.22);
+            filter: blur(10px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #71e3d5;
+            box-shadow: 0 0 0 5px rgba(113, 227, 213, 0.16);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+        }
+
+        /*
+         * Полупрозрачный градиентный текст.
+         * Белый градиент сохраняет читаемость
+         * на профессиональном темном фоне.
+         */
+
+        .gradient-title {
+            color: transparent;
+            background:
+                linear-gradient(
+                    100deg,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0.76) 48%,
+                    rgba(185, 255, 244, 0.94) 100%
+                );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            max-width: 720px;
+            margin: 26px 0 0;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 18px;
+        }
+
+        /* Основное содержимое */
+
+        .content {
+            padding: 56px 64px 64px;
+        }
+
+        .greeting {
+            margin: 0 0 30px;
+            color: var(--primary);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(25px, 3vw, 34px);
+            font-weight: 700;
+        }
+
+        .lead {
+            margin-bottom: 36px;
+            padding: 24px 26px;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(108, 99, 255, 0.1),
+                    rgba(108, 99, 255, 0.025)
+                );
+            color: #34405a;
+            font-size: 18px;
+        }
+
+        p {
+            margin: 0 0 22px;
+        }
+
+        .section {
+            margin-top: 48px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .section-number {
+            display: grid;
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border-radius: 13px;
+            color: #ffffff;
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-light),
+                    var(--accent)
+                );
+            box-shadow: 0 8px 18px rgba(108, 99, 255, 0.24);
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        h2 {
+            margin: 2px 0 0;
+            color: var(--primary);
+            font-size: clamp(23px, 3vw, 31px);
+            line-height: 1.25;
+            letter-spacing: -0.025em;
+        }
+
+        .section-intro {
+            margin-left: 58px;
+            color: var(--text-muted);
+        }
+
+        /* Карточки с показателями */
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 26px 0 8px;
+        }
+
+        .metric-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            min-height: 92px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-medium);
+            background: var(--surface-solid);
+            box-shadow: var(--small-shadow);
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(108, 99, 255, 0.32);
+            box-shadow: 0 16px 36px rgba(36, 59, 104, 0.12);
+        }
+
+        .metric-icon {
+            display: grid;
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 11px;
+            color: var(--accent);
+            background: var(--accent-soft);
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .metric-card p {
+            margin: 4px 0 0;
+            line-height: 1.5;
+        }
+
+        /* Акцентный блок акции */
+
+        .campaign-card {
+            position: relative;
+            overflow: hidden;
+            margin: 28px 0;
+            padding: 30px;
+            border: 1px solid rgba(22, 166, 161, 0.2);
+            border-radius: 24px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(22, 166, 161, 0.1),
+                    rgba(75, 108, 183, 0.07)
+                );
+        }
+
+        .campaign-card::after {
+            content: "45 000 ₽";
+            position: absolute;
+            right: -10px;
+            bottom: -28px;
+            color: rgba(22, 166, 161, 0.08);
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+        }
+
+        .campaign-label {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent-secondary);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .campaign-card h3 {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 18px;
+            color: var(--primary);
+            font-size: 25px;
+        }
+
+        .campaign-card ul {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Списки */
+
+        .styled-list {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .styled-list li::before {
+            content: "✓";
+            position: absolute;
+            top: 1px;
+            left: 0;
+            display: grid;
+            width: 20px;
+            height: 20px;
+            place-items: center;
+            border-radius: 50%;
+            color: #ffffff;
+            background: var(--accent-secondary);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* Разделение ответственности */
+
+        .responsibility-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin: 28px 0;
+        }
+
+        .responsibility-card {
+            padding: 26px;
+            border-radius: var(--radius-medium);
+        }
+
+        .responsibility-card.marketing {
+            border: 1px solid rgba(22, 166, 161, 0.2);
+            background: rgba(22, 166, 161, 0.07);
+        }
+
+        .responsibility-card.sales {
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            background: rgba(108, 99, 255, 0.07);
+        }
+
+        .responsibility-card h3 {
+            margin: 0 0 12px;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .responsibility-card p {
+            margin: 0;
+            color: #4b566d;
+        }
+
+        /* Информационный блок */
+
+        .info-box {
+            display: flex;
+            gap: 18px;
+            margin: 28px 0;
+            padding: 25px;
+            border: 1px solid rgba(75, 108, 183, 0.16);
+            border-radius: var(--radius-medium);
+            background: #f7f9fd;
+        }
+
+        .info-box-icon {
+            display: grid;
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            border-radius: 14px;
+            color: var(--primary-light);
+            background: rgba(75, 108, 183, 0.11);
+            font-size: 22px;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        /* Итоговые преимущества */
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .benefit {
+            position: relative;
+            overflow: hidden;
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-medium);
+            background: #ffffff;
+        }
+
+        .benefit::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--accent),
+                    var(--accent-secondary)
+                );
+        }
+
+        .benefit strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 17px;
+        }
+
+        .benefit span {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Заключение */
+
+        .conclusion {
+            position: relative;
+            margin-top: 50px;
+            padding: 34px;
+            border-radius: 24px;
+            color: #ffffff;
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-light)
+                );
+            box-shadow: 0 20px 45px rgba(36, 59, 104, 0.2);
+        }
+
+        .conclusion::before {
+            content: "Предложение";
+            display: block;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .conclusion p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .footer {
+            padding: 24px 64px 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            background: rgba(247, 249, 253, 0.72);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Печать */
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+
+            body::before,
+            body::after {
+                display: none;
+            }
+
+            .page {
+                width: 100%;
+                margin: 0;
+            }
+
+            .document {
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .metric-card:hover {
+                transform: none;
+            }
+
+            .section,
+            .campaign-card,
+            .responsibility-card,
+            .info-box,
+            .benefit {
+                break-inside: avoid;
+            }
+        }
+
+        /* Мобильная версия */
+
+        @media (max-width: 760px) {
+            .page {
+                width: min(100% - 20px, 1120px);
+                margin: 10px auto;
+            }
+
+            .document {
+                border-radius: 20px;
+            }
+
+            .hero {
+                padding: 42px 26px 38px;
+            }
+
+            .content {
+                padding: 38px 24px 44px;
+            }
+
+            .footer {
+                padding: 22px 24px;
+            }
+
+            .metrics-grid,
+            .responsibility-grid,
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .section-intro {
+                margin-left: 0;
+            }
+
+            .campaign-card {
+                padding: 24px;
+            }
+
+            .campaign-card::after {
+                font-size: 52px;
+            }
+
+            .info-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <article class="document">
+
+            <header class="hero">
+                <div class="hero-content">
+                    <div class="eyebrow">
+                        Управленческое предложение
+                    </div>
+
+                    <h1 class="gradient-title">
+                        Совершенствование процессов управления продажами
+                    </h1>
+
+                    <p class="hero-description">
+                        Предложение по распределению ответственности,
+                        формированию аналитики и повышению прозрачности
+                        управленческой отчетности.
+                    </p>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <p class="greeting">
+                    Добрый день, уважаемые руководители!
+                </p>
+
+                <div class="lead">
+                    Хочу поделиться одним наблюдением и предложением по
+                    совершенствованию управленческих процессов. Возможно,
+                    оно поможет сделать систему принятия решений более
+                    оперативной и прозрачной.
+                </div>
+
+                <p>
+                    На мой взгляд, для эффективного управления важно, чтобы
+                    каждое подразделение являлось владельцем своих ключевых
+                    показателей и самостоятельно формировало аналитику по
+                    результатам своей работы.
+                </p>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+
+                        <h2>
+                            Ответственность за аналитику отдела продаж
+                        </h2>
+                    </div>
+
+                    <p class="section-intro">
+                        Аналитика по деятельности отдела продаж должна
+                        находиться в зоне ответственности руководителя
+                        коммерческого отдела. Речь идет не только о сборе
+                        данных, но и об их регулярном анализе, подготовке
+                        выводов и предложений по повышению эффективности.
+                    </p>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-icon">01</span>
+                            <p>Количество заключенных договоров</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">₽</span>
+                            <p>Общая сумма заключенных сделок</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">+</span>
+                            <p>Количество дополнительных соглашений</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">↗</span>
+                            <p>
+                                Распределение результатов по подразделениям
+                                и менеджерам
+                            </p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">Ø</span>
+                            <p>Средний чек</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">%</span>
+                            <p>Конверсия между этапами продаж</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-icon">Δ</span>
+                            <p>
+                                Динамика показателей в сравнении
+                                с предыдущими периодами
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+
+                        <h2>
+                            Оценка эффективности маркетинговых мероприятий
+                        </h2>
+                    </div>
+
+                    <p class="section-intro">
+                        Отдельным блоком целесообразно анализировать результаты
+                        маркетинговых акций и последующее движение клиентов
+                        по воронке продаж.
+                    </p>
+
+                    <div class="campaign-card">
+                        <span class="campaign-label">
+                            Пример аналитики
+                        </span>
+
+                        <h3>
+                            Акция «Проектирование за 45 тыс. руб.»
+                        </h3>
+
+                        <ul class="styled-list">
+                            <li>Сколько договоров было заключено</li>
+                            <li>Какими менеджерами оформлены договоры</li>
+                            <li>
+                                Сколько клиентов впоследствии перешли
+                                к строительству
+                            </li>
+                            <li>Какая получилась итоговая конверсия</li>
+                            <li>
+                                Какой экономический эффект принесла акция
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        Такая аналитика позволяет оценивать не только количество
+                        привлеченных клиентов, но и качество дальнейшей работы
+                        с ними после передачи в отдел продаж.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+
+                        <h2>
+                            Разделение зон ответственности
+                        </h2>
+                    </div>
+
+                    <p class="section-intro">
+                        Для повышения эффективности важно четко определить,
+                        на каком этапе ответственность переходит от маркетинга
+                        к коммерческому подразделению.
+                    </p>
+
+                    <div class="responsibility-grid">
+                        <div class="responsibility-card marketing">
+                            <h3>Маркетинг</h3>
+
+                            <p>
+                                Обеспечивает поток качественных лидов
+                                и передает их в отдел продаж.
+                            </p>
+                        </div>
+
+                        <div class="responsibility-card sales">
+                            <h3>Коммерческий отдел</h3>
+
+                            <p>
+                                Отвечает за сопровождение клиента, движение
+                                сделки по воронке и итоговую конверсию.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p>
+                        Если задача маркетинга, в частности Вероники, —
+                        обеспечить поток качественных лидов, то дальнейшее
+                        сопровождение клиента, анализ движения по воронке
+                        и итоговая конверсия являются зоной ответственности
+                        коммерческого блока.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">04</span>
+
+                        <h2>
+                            Аналитика при ограничениях CRM
+                        </h2>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-box-icon">i</div>
+
+                        <p>
+                            Даже если действующая CRM или воронка продаж пока
+                            не позволяют автоматически получать необходимые
+                            отчеты, информацию можно сформировать вручную:
+                            составить единый реестр договоров проектирования,
+                            отметить дальнейший статус каждого проекта —
+                            строительство, отказ, в работе — и построить
+                            сводную аналитику.
+                        </p>
+                    </div>
+
+                    <p>
+                        Это позволит уже сейчас получать объективную картину
+                        эффективности без ожидания доработок информационной
+                        системы.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">05</span>
+
+                        <h2>
+                            Ежемесячный дашборд отдела продаж
+                        </h2>
+                    </div>
+
+                    <p>
+                        Считаю целесообразным закрепить за коммерческим отделом
+                        подготовку ежемесячного отчета — дашборда по результатам
+                        продаж, который включает основные показатели
+                        деятельности отдела.
+                    </p>
+
+                    <p>
+                        Финансовая служба и бухгалтерия, безусловно, могут
+                        помогать в части методологии расчета показателей,
+                        проверки корректности цифр и предоставления финансовых
+                        данных, например о поступивших оплатах.
+                    </p>
+
+                    <p>
+                        Однако владельцем данного отчета и основным докладчиком
+                        логично сделать руководителя коммерческого
+                        подразделения.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <div class="section-heading">
+                        <span class="section-number">06</span>
+
+                        <h2>
+                            Ожидаемый управленческий эффект
+                        </h2>
+                    </div>
+
+                    <div class="benefits">
+                        <div class="benefit">
+                            <strong>Прозрачность</strong>
+                            <span>
+                                Повышение качества управленческой отчетности
+                            </span>
+                        </div>
+
+                        <div class="benefit">
+                            <strong>Оперативность</strong>
+                            <span>
+                                Быстрое получение информации для принятия решений
+                            </span>
+                        </div>
+
+                        <div class="benefit">
+                            <strong>Разграничение функций</strong>
+                            <span>
+                                Исключение дублирования между подразделениями
+                            </span>
+                        </div>
+
+                        <div class="benefit">
+                            <strong>Ответственность</strong>
+                            <span>
+                                Формирование единых центров ответственности
+                                за результат
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="conclusion">
+                    <p>
+                        Предлагаю рассмотреть возможность закрепить такую модель
+                        работы и определить перечень ключевых показателей,
+                        за которые отвечает каждое подразделение.
+                    </p>
+                </div>
+
+            </div>
+
+            <footer class="footer">
+                Предложение по совершенствованию управленческих процессов
+            </footer>
+
+        </article>
+    </main>
+</body>
+</html>
+
